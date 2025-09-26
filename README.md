@@ -24,7 +24,7 @@ This repository includes both the original Python framework and a modern web int
 ### Quick Start - Web Interface
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/VulnReaper.git
+git clone https://github.com/ahm0x/VulnReaper-ahm0x.git
 cd VulnReaper
 
 # Setup and start web interface
