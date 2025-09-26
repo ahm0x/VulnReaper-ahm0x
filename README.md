@@ -27,6 +27,60 @@ This repository includes both the original Python framework and a modern web int
 git clone https://github.com/yourusername/VulnReaper.git
 cd VulnReaper
 
+# Setup and start web interface
+npm run setup
+npm run dev
+
+# Or manually:
+npm install
+npm run dev
+```
+
+The web interface will be available at `http://localhost:3000`
+
+### Quick Start - Python Framework
+```bash
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Run system health check (recommended)
+python -c "from Settings.Program.Config.ErrorHandler import error_handler; error_handler.validate_dependencies()"
+
+# Launch the framework
+python Main.py
+```
+
+---
+
+## 🔧 Fixed Issues in v1.0.1
+
+### Critical Fixes
+- ✅ **Fixed missing Util.py imports** - Resolved all import errors
+- ✅ **Added comprehensive error handling** - Centralized error management
+- ✅ **Enhanced security validation** - Input sanitization and validation
+- ✅ **Fixed API integration issues** - Proper rate limiting and caching
+- ✅ **Improved report generation** - Professional templates and formats
+
+### New Features
+- 🆕 **System Health Check** - Comprehensive system monitoring
+- 🆕 **API Security Scanner** - Advanced API endpoint testing
+- 🆕 **Enhanced Database Management** - SQLite-based result storage
+- 🆕 **Professional Report Templates** - Executive and technical reports
+- 🆕 **Centralized Security Module** - Input validation and sanitization
+
+### Security Improvements
+- 🛡️ **Input Sanitization** - All user inputs are properly sanitized
+- 🛡️ **Rate Limiting** - API calls are properly rate limited
+- 🛡️ **Target Validation** - Prevents scanning of restricted targets
+- 🛡️ **Error Logging** - Comprehensive error tracking and logging
+- 🛡️ **Dependency Validation** - Automatic dependency checking
+
+---
+
+## 🚀 New Quick Start Guide
+
+### Web Interface (Recommended)
+```bash
 # Start the web interface
 npm install
 npm run dev
@@ -70,12 +124,21 @@ git clone https://github.com/ahm0x/VulnReaper.git
 cd VulnReaper
 
 # Install dependencies
+npm install
+
+# Start web interface
+npm run dev
+```
+
+### Python Framework
+```bash
+# Install Python dependencies
 pip install -r requirements.txt
 
-# Run setup (optional - installs additional tools)
-python Setup.py
+# Run health check
+python Settings/Program/System-Health-Check.py
 
-# Launch the framework
+# Start framework
 python Main.py
 ```
 

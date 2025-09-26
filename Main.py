@@ -16,6 +16,8 @@ Professional Bug Bounty & Penetration Testing Framework
 import os
 import sys
 import time
+import signal
+import atexit
 
 # Add the Settings/Program directory to Python path
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -30,6 +32,39 @@ except ImportError as e:
     print("Please ensure all required files are present and run Setup.py first.")
     sys.exit(1)
 
+def signal_handler(sig, frame):
+    """Handle Ctrl+C gracefully"""
+    print(f"\n{BEFORE + current_time_hour() + AFTER} {INFO} Framework interrupted by user")
+    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} Thank you for using VulnReaper by ahm0x!")
+    logger.info("Framework terminated by user")
+    sys.exit(0)
+
+def cleanup_on_exit():
+    """Cleanup function called on exit"""
+    logger.info("Framework shutting down")
+
+# Register signal handlers and cleanup
+signal.signal(signal.SIGINT, signal_handler)
+atexit.register(cleanup_on_exit)
+
+def check_system_requirements():
+    """Check system requirements and dependencies"""
+    print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Checking system requirements...")
+    
+    # Check Python version
+    if sys.version_info < (3, 8):
+        print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Python 3.8+ required. Current: {sys.version}")
+        sys.exit(1)
+    
+    # Check dependencies
+    if not check_dependencies():
+        print(f"{BEFORE + current_time_hour() + AFTER} {ERROR} Missing dependencies. Run Setup.py first.")
+        sys.exit(1)
+    
+    # Create output directories
+    create_output_directories()
+    
+    print(f"{BEFORE + current_time_hour() + AFTER} {INFO} System requirements check passed")
 def display_banner():
     """Display the main VulnReaper banner"""
     banner = f"""
@@ -59,6 +94,8 @@ def display_banner():
     ║  {blue}GitHub:{white}  https://github.com/ahm0x/VulnReaper                              ║
     ║  {blue}Telegram:{white} https://t.me/ahm0x                                              ║
     ║                                                                                      ║
+    ║  {cyan}System:{white} {platform.system()} {platform.release()}                                    ║
+    ║  {cyan}Python:{white} {sys.version.split()[0]}                                                ║
     ╚══════════════════════════════════════════════════════════════════════════════════════╝
     """
     return banner
@@ -76,13 +113,32 @@ def display_main_menu():
     ║  {BEFORE}04{AFTER}{white} 🌍 Network Analysis          {BEFORE}14{AFTER}{white} 🔬 Digital Forensics          ║
     ║  {BEFORE}05{AFTER}{white} 🔧 Exploit Development       {BEFORE}15{AFTER}{white} 📊 Reporting & Documentation  ║
     ║                                                                                      ║
-    ║  {BEFORE}88{AFTER}{white} ℹ️  Tool Information         {BEFORE}99{AFTER}{white} 🌐 Open Web Interface         ║
-    ║  {BEFORE}00{AFTER}{white} 🚪 Exit Framework                                                    ║
+    ║  {BEFORE}77{AFTER}{white} 🔧 System Diagnostics        {BEFORE}88{AFTER}{white} ℹ️  Tool Information         ║
+    ║  {BEFORE}99{AFTER}{white} 🌐 Open Web Interface        {BEFORE}00{AFTER}{white} 🚪 Exit Framework             ║
     ║                                                                                      ║
     {red}╚══════════════════════════════════════════════════════════════════════════════════════╝{white}
     """
     return menu
 
+def display_system_diagnostics():
+    """Display system diagnostics and health check"""
+    print(f"{BEFORE + current_time_hour() + AFTER} {WAIT} Running system diagnostics...")
+    
+    system_info = get_system_info()
+    
+    print(f"""
+{BEFORE + current_time_hour() + AFTER} {INFO} System Information:
+    Platform: {white}{system_info['platform']} {system_info['platform_release']}{red}
+    Architecture: {white}{system_info['architecture']}{red}
+    Hostname: {white}{system_info['hostname']}{red}
+    Username: {white}{system_info['username']}{red}
+    Python Version: {white}{system_info['python_version']}{red}
+    """)
+    
+    # Check disk space
+    try:
+        import shutil
+        total, used, free = shutil.disk_usage(tool_path)
 def main():
     """Main application entry point"""
     try:

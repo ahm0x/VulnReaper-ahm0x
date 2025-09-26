@@ -9,57 +9,35 @@ urllib3>=2.0.0
 beautifulsoup4>=4.12.0
 lxml>=4.9.0
 
+# Template Engine
+jinja2>=3.1.0
+
 # Network & DNS
 dnspython>=2.4.0
-scapy>=2.5.0
-python-nmap>=0.7.1
+python-whois>=0.8.0
 
 # Cryptography & Security
 cryptography>=41.0.0
 bcrypt>=4.0.0
-pycryptodome>=3.18.0
-hashlib-compat>=1.0.0
+pycryptodome>=3.19.0
 
 # System & OS
 psutil>=5.9.0
 colorama>=0.4.6
-pyautogui>=0.9.54
-screeninfo>=0.8.1
-GPUtil>=1.4.0
 
 # Phone & Location
 phonenumbers>=8.13.0
 
 # Discord & Social
-discord.py>=2.3.0
-discord>=2.3.0
+discord.py>=2.3.2
 
 # Image & Media
 Pillow>=10.0.0
-opencv-python>=4.8.0
-
-# Browser & Cookies
-browser-cookie3>=0.19.1
-
-# Translation
-deep-translator>=1.11.0
-
-# WHOIS & Domain
-python-whois>=0.8.0
 
 # Windows specific (conditional)
 pywin32>=306; sys_platform == "win32"
 keyboard>=0.13.5; sys_platform == "win32"
 
-# Build tools
-pyinstaller>=5.13.0
-auto-py-to-exe>=2.40.0
-
-# GUI
-PyQt5>=5.15.9; sys_platform == "win32"
-PyQtWebEngine>=5.15.6; sys_platform == "win32"
-
-# Additional security tools
-python-whois>=0.8.0
-shodan>=1.29.1
-censys>=2.2.0
+# Additional tools
+selenium>=4.15.0
+ipaddress>=1.0.23; python_version < "3.3"
