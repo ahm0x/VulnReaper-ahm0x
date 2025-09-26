@@ -1,29 +1,65 @@
-setuptools
-pyinstaller
-auto-py-to-exe
-urllib3
-PyQt5
-PyQtWebEngine
-colorama
-psutil
-keyboard
-requests
-dnspython
-deep-translator
-phonenumbers
-bcrypt
-beautifulsoup4
-pypiwin32
-whois
-cryptography
-screeninfo
-GPUtil
-pycryptodome
-discord
-discord.py
-Pillow
-browser-cookie3
-opencv-python
-pyautogui
-beautifulsoup4
-lxml
+# VulnReaper by ahm0x - Professional Cybersecurity Framework
+# Core Dependencies
+setuptools>=65.0.0
+wheel>=0.37.0
+
+# Web Framework
+requests>=2.31.0
+urllib3>=2.0.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# Network & DNS
+dnspython>=2.4.0
+scapy>=2.5.0
+python-nmap>=0.7.1
+
+# Cryptography & Security
+cryptography>=41.0.0
+bcrypt>=4.0.0
+pycryptodome>=3.18.0
+hashlib-compat>=1.0.0
+
+# System & OS
+psutil>=5.9.0
+colorama>=0.4.6
+pyautogui>=0.9.54
+screeninfo>=0.8.1
+GPUtil>=1.4.0
+
+# Phone & Location
+phonenumbers>=8.13.0
+
+# Discord & Social
+discord.py>=2.3.0
+discord>=2.3.0
+
+# Image & Media
+Pillow>=10.0.0
+opencv-python>=4.8.0
+
+# Browser & Cookies
+browser-cookie3>=0.19.1
+
+# Translation
+deep-translator>=1.11.0
+
+# WHOIS & Domain
+python-whois>=0.8.0
+
+# Windows specific (conditional)
+pywin32>=306; sys_platform == "win32"
+keyboard>=0.13.5; sys_platform == "win32"
+
+# Build tools
+pyinstaller>=5.13.0
+auto-py-to-exe>=2.40.0
+
+# GUI
+PyQt5>=5.15.9; sys_platform == "win32"
+PyQtWebEngine>=5.15.6; sys_platform == "win32"
+
+# Additional security tools
+python-whois>=0.8.0
+shodan>=1.29.1
+censys>=2.2.0
