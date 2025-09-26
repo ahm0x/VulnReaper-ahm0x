@@ -1,0 +1,5 @@
+# Discord Tokens
+# Add your Discord tokens here, one per line
+
+# Educational purposes only - Use only your own tokens
+# Never share or use tokens without permission
